@@ -89,6 +89,7 @@ class CustomMakeAction(BaseAction):
                     "--makefile",
                     "{}".format(self.manifest_path),
                     "build-{logical_id}".format(logical_id=self.build_logical_id),
+                    "--debug",
                 ],
                 env=current_env,
                 cwd=self.scratch_dir,

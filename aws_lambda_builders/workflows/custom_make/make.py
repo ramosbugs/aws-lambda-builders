@@ -80,11 +80,11 @@ class SubProcessMake(object):
 
         LOG.debug("executing Make: %s", invoke_make)
 
-        p = self.osutils.popen(invoke_make, stdout=self.osutils.pipe, stderr=self.osutils.pipe, cwd=cwd, env=env)
+        p = self.osutils.popen(invoke_make, stdout=None, stderr=None, cwd=cwd, env=env)
 
         out, err = p.communicate()
 
         if p.returncode != 0:
             raise MakeExecutionError(message=err.decode("utf8").strip())
 
-        return out.decode("utf8").strip()
+        return "" #out.decode("utf8").strip()

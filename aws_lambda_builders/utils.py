@@ -54,10 +54,10 @@ def copytree(source, destination, ignore=None):
         new_source = os.path.join(source, name)
         new_destination = os.path.join(destination, name)
 
-        if os.path.isdir(new_source):
+        if os.path.isdir(new_source) and not os.path.islink(new_source):
             copytree(new_source, new_destination, ignore=ignore)
         else:
-            shutil.copy2(new_source, new_destination)
+            shutil.copy2(new_source, new_destination, follow_symlinks=False)
 
 
 # NOTE: The below function is copied from Python source code and modified
